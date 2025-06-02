@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <main className="container mx-auto py-6 px-4">
       <h1 className="text-3xl font-bold text-center mb-8">
-        Simulador de Plantación de Peras - 3 Generaciones de Carpocapsa
+        SIPECA - SIMULADOR DE PERAS Y CARPOCAPSA
       </h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
