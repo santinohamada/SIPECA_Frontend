@@ -11,7 +11,7 @@ export default function MyNavbar() {
   };
 
   return (
-    <nav className="w-full py-4 px-6 bg-green-300">
+    <nav className="w-full py-4 px-6 ">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
         <NavLink to={'/'} className="text-xl font-medium">
@@ -47,7 +47,7 @@ export default function MyNavbar() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 bg-green-300 shadow-sm">
+        <div className="md:hidden absolute top-16 left-0 right-0  shadow-sm">
           <div className="flex flex-col space-y-4 px-6 py-4">
             <NavLink
               to="/"

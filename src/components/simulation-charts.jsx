@@ -27,7 +27,7 @@ export default function SimulationCharts({ type, generationResults }) {
         <CardContent className="pt-6">
           <div className="h-100">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={generationResults.datosGeneracion} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+              <LineChart data={generationResults.resultadosPorGeneracion} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid  />
                 <XAxis
                   dataKey="generation"
@@ -77,7 +77,7 @@ export default function SimulationCharts({ type, generationResults }) {
         <CardContent className="pt-6">
           <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={generationResults.datosGeneracion} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+              <LineChart data={generationResults.resultadosPorGeneracion} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                   dataKey="generation"
@@ -127,7 +127,7 @@ export default function SimulationCharts({ type, generationResults }) {
         <CardContent className="pt-6">
           <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={generationResults.datosGeneracion} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+              <LineChart data={generationResults.resultadosPorGeneracion} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                   dataKey="generacion"

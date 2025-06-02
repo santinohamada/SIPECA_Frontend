@@ -36,7 +36,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-green-300 flex min-h-full">
+    <div className=" flex min-h-full">
 
     
     <main className="container mx-auto py-6 px-4 ">
@@ -83,21 +83,22 @@ export default function Home() {
                       )}
 
                       {simulationData.aplicarFeromonas ? (
-                        <div>Tratamiento sexual aplicado</div>
+                        <div>Tratamiento con feromonas aplicado</div>
                       ) : (
-                        <div>Tratamiento sexual NO aplicado</div>
+                        <div>Tratamiento con feromonas NO aplicado</div>
                       )}
                       <div className="flex items-center gap-4 text-sm">
                         <span>
                           🕒 Duración total: {generationResults.diasTotales}{" "}
                           días
                         </span>
-                        <span>🐛 3 generaciones</span>
-                        <span>
-                          📊 Gen 1: {generationResults.datosGeneracion[0].dias}d
-                          | Gen 2: {generationResults.datosGeneracion[1].dias}d
-                          | Gen 3: {generationResults.datosGeneracion[2].dias}d
-                        </span>
+                        <span>🐛 {generationResults.generacionesTotales} generaciones</span>
+                       {generationResults.resultadosPorGeneracion.map((res,i)=>(<span>
+                          📊 Gen {i}: {res.dias}d
+                          |
+                        </span>))}
+                        
+                        
                       </div>
                     </div>
                   </CardDescription>

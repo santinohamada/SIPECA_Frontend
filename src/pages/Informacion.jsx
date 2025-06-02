@@ -5,10 +5,10 @@ import cicloPlaga from "/cicloPlaga.png";
 
 export function Informacion() {
   return (
-    <div className="bg-green-300">
+    <div className="">
 
-    <section className="max-w-5xl mx-auto p-8 bg-green-300 rounded-lg ">
-      <h1 className="text-4xl font-extrabold text-blue-800 mb-10 border-b-4 border-green-400 pb-3">
+    <section className="max-w-5xl mx-auto p-8  rounded-lg ">
+      <h1 className="text-4xl font-extrabold text-blue-800 mb-10 border-b-4 border-gray-800  pb-3">
         Información sobre la problemática
       </h1>
 
@@ -24,7 +24,7 @@ export function Informacion() {
       {/* Plantación en hileras */}
       <section className="flex flex-col md:flex-row items-center gap-8 mb-12">
         <div className="md:w-1/2 space-y-4">
-          <h2 className="text-2xl font-semibold text-blue-700 border-b-2 border-green-300 pb-2">
+          <h2 className="text-2xl font-semibold text-blue-700 border-b-2 border-gray-800 pb-2">
             Plantación en hileras
           </h2>
           <p className="text-justify  leading-relaxed">
@@ -43,7 +43,7 @@ export function Informacion() {
       {/* Ciclo de la pera */}
       <section className="flex flex-col md:flex-row-reverse items-center gap-8 mb-12">
         <div className="md:w-1/2 space-y-4">
-          <h2 className="text-2xl font-semibold text-blue-700 border-b-2 border-green-300 pb-2">
+          <h2 className="text-2xl font-semibold text-blue-700 border-b-2 border-gray-800 pb-2">
             Ciclo de la pera Williams
           </h2>
           <p className="text-justify  leading-relaxed">
@@ -62,7 +62,7 @@ export function Informacion() {
       {/* Zona geográfica */}
       <section className="flex flex-col md:flex-row items-center gap-8 mb-12">
         <div className="md:w-1/2 space-y-4">
-          <h2 className="text-2xl font-semibold text-blue-700 border-b-2 border-green-300 pb-2">
+          <h2 className="text-2xl font-semibold text-blue-700 border-b-2 border-gray-800 pb-2">
             Zona geográfica: Alto Valle de Río Negro y Neuquén
           </h2>
           <p className="text-justify  leading-relaxed">
@@ -81,7 +81,7 @@ export function Informacion() {
       {/* Ciclo de la plaga */}
       <section className="flex flex-col md:flex-row-reverse items-center gap-8 mb-12">
         <div className="md:w-1/2 space-y-4">
-          <h2 className="text-2xl font-semibold text-blue-700 border-b-2 border-green-300 pb-2">
+          <h2 className="text-2xl font-semibold text-blue-700 border-b-2 border-gray-800 pb-2">
             Ciclo de la carpocapsa
           </h2>
           <p className="text-justify  leading-relaxed">

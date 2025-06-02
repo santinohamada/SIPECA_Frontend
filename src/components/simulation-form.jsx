@@ -172,7 +172,7 @@ export default function SimulationForm({ onSubmit, loading }) {
           />
         )}
 
-        <Button  type="submit" className="w-full bg-green-700" disabled={loading}>
+        <Button  type="submit" className="w-full bg-black" disabled={loading}>
           Calcular Resultados por Generaciones
         </Button>
       </form>
