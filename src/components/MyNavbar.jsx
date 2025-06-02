@@ -54,29 +54,17 @@ export default function MyNavbar() {
               className={({ isActive }) => `text-gray-600 hover:text-black transition-colors py-2 ${isActive ? 'text-black font-semibold' : ''}`}
               onClick={() => setIsMenuOpen(false)}
             >
-              Inicio
+              Simulador
             </NavLink>
+            
             <NavLink
-              to="/productos"
+              to="/info"
               className={({ isActive }) => `text-gray-600 hover:text-black transition-colors py-2 ${isActive ? 'text-black font-semibold' : ''}`}
               onClick={() => setIsMenuOpen(false)}
             >
-              Productos
+              Información
             </NavLink>
-            <NavLink
-              to="/sobre-nosotros"
-              className={({ isActive }) => `text-gray-600 hover:text-black transition-colors py-2 ${isActive ? 'text-black font-semibold' : ''}`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Sobre Nosotros
-            </NavLink>
-            <NavLink
-              to="/contacto"
-              className={({ isActive }) => `text-gray-600 hover:text-black transition-colors py-2 ${isActive ? 'text-black font-semibold' : ''}`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contacto
-            </NavLink>
+            
           </div>
         </div>
       )}

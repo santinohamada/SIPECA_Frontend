@@ -168,19 +168,7 @@ export default function SimulationResults({ currentResults, simulationData }) {
             <strong>{formatCurrency(currentResults.dineroFinalPerdido)}</strong>{" "}
             y una ganancia de{" "}
             <strong>{formatCurrency(currentResults.dineroFinalGanado)}</strong>,
-            que pudo haber sido mayor si se hubiera aplicado un tratamiento, ya
-            sea quimico u hormonal. La producción de peras sanas se redujo en un{" "}
-            <strong>
-              {(
-                (1 -
-                  currentResults.perasSanasFinales /
-                    (currentResults.perasSanasFinales -
-                      currentResults.perasSanasIniciales)) *
-                100
-              ).toFixed(1)}
-              %
-            </strong>
-            , lo que refleja el impacto económico de no controlar la plaga.
+            que pudo haber sido mayor si se hubiera aplicado un tratamiento (quimico y/o hormonal), lo que refleja el impacto económico de no controlar la plaga.
           </p>
         )}
       </div>
