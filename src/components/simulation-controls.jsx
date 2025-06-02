@@ -1,7 +1,7 @@
-
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { Play, Pause, SkipForward, RefreshCw, StepForward } from "lucide-react"
+
 
 export default function SimulationControls({
   isRunning,

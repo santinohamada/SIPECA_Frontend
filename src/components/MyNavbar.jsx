@@ -32,18 +32,7 @@ export default function MyNavbar() {
           >
             Información
           </NavLink>
-          <NavLink 
-            to="/sobre-nosotros" 
-            className={({ isActive }) => `text-gray-600 hover:text-black transition-colors ${isActive ? 'text-black font-semibold' : ''}`}
-          >
-            Sobre Nosotros
-          </NavLink>
-          <NavLink 
-            to="/contacto" 
-            className={({ isActive }) => `text-gray-600 hover:text-black transition-colors ${isActive ? 'text-black font-semibold' : ''}`}
-          >
-            Contacto
-          </NavLink>
+          
         </div>
 
         {/* Mobile Menu Button */}
