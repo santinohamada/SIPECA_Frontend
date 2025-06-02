@@ -27,7 +27,7 @@ export default function SimulationCharts({ type, generationResults }) {
         <CardContent className="pt-6">
           <div className="h-100">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={generationResults.generationData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+              <LineChart data={generationResults.datosGeneracion} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid  />
                 <XAxis
                   dataKey="generation"
@@ -41,13 +41,13 @@ export default function SimulationCharts({ type, generationResults }) {
                   formatter={(value, name) => [formatNumber(value), name]}
                   labelFormatter={(label, payload) => {
                     const data = payload?.[0]?.payload
-                    return `Generación ${label} (${data?.days} días)`
+                    return `Generación ${label} (${data?.dias} días)`
                   }}
                 />
                 <Legend />
                 <Line
                   name="Peras Sanas"
-                  dataKey="healthyPears"
+                  dataKey="perasSanas"
                   stroke="#4ade80"
                   strokeWidth={2.5}
                   type="monotone"
@@ -56,7 +56,7 @@ export default function SimulationCharts({ type, generationResults }) {
                 />
                 <Line
                   name="Peras Infectadas"
-                  dataKey="infectedPears"
+                  dataKey="perasInfectadas"
                   stroke="#f87171"
                   strokeWidth={2.5}
                   type="monotone"
@@ -77,7 +77,7 @@ export default function SimulationCharts({ type, generationResults }) {
         <CardContent className="pt-6">
           <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={generationResults.generationData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+              <LineChart data={generationResults.datosGeneracion} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                   dataKey="generation"
@@ -91,14 +91,14 @@ export default function SimulationCharts({ type, generationResults }) {
                   formatter={(value, name) => [formatNumber(value), name]}
                   labelFormatter={(label, payload) => {
                     const data = payload?.[0]?.payload
-                    return `Generación ${label} (${data?.days} días)`
+                    return `Generación ${label} (${data?.dias} días)`
                   }}
                 />
                 <Legend />
                 <Line
                   type="monotone"
                   name="Hectáreas Infectadas"
-                  dataKey="infectedHectares"
+                  dataKey="hectareasInfectadas"
                   stroke="#f87171"
                   strokeWidth={2.5}
                   dot={false}
@@ -107,7 +107,7 @@ export default function SimulationCharts({ type, generationResults }) {
                 <Line
                   type="monotone"
                   name="Hectáreas Sanas"
-                  dataKey="healthyHectares"
+                  dataKey="hectareasSanas"
                   stroke="#4ade80"
                   strokeWidth={2.5}
                   dot={false}
@@ -127,10 +127,10 @@ export default function SimulationCharts({ type, generationResults }) {
         <CardContent className="pt-6">
           <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={generationResults.generationData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+              <LineChart data={generationResults.datosGeneracion} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
-                  dataKey="generation"
+                  dataKey="generacion"
                   label={{ value: "Generación", position: "insideBottomRight", offset: -5 }}
                 />
                 <YAxis
@@ -141,14 +141,14 @@ export default function SimulationCharts({ type, generationResults }) {
                   formatter={(value, name) => [formatCurrency(value), name]}
                   labelFormatter={(label, payload) => {
                     const data = payload?.[0]?.payload
-                    return `Generación ${label} (${data?.days} días)`
+                    return `Generación ${label} (${data?.dias} días)`
                   }}
                 />
                 <Legend />
                 <Line
                   type="monotone"
                   name="Dinero Ganado Acumulado"
-                  dataKey="cumulativeEarned"
+                  dataKey="ganancia"
                   stroke="#4ade80"
                   strokeWidth={2.5}
                   dot={false}
@@ -157,7 +157,7 @@ export default function SimulationCharts({ type, generationResults }) {
                 <Line
                   type="monotone"
                   name="Dinero Perdido Acumulado"
-                  dataKey="cumulativeLost"
+                  dataKey="perdida"
                   stroke="#f87171"
                   strokeWidth={2.5}
                   dot={false}
@@ -166,8 +166,17 @@ export default function SimulationCharts({ type, generationResults }) {
                 <Line
                   type="monotone"
                   name="Costo Tratamiento Acumulado"
-                  dataKey="cumulativeTreatmentCost"
+                  dataKey="costoTratamientoQuimico"
                   stroke="#facc15"
+                  strokeWidth={2.5}
+                  dot={false}
+                  activeDot={{ r: 6 }}
+                />
+                <Line
+                  type="monotone"
+                  name="Costo Tratamiento Acumulado"
+                  dataKey="costoTratamientoFeromonas"
+                  stroke="#000080"
                   strokeWidth={2.5}
                   dot={false}
                   activeDot={{ r: 6 }}

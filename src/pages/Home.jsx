@@ -22,6 +22,7 @@ export default function Home() {
   console.log(simulationData);
   console.log(generationResults);
   const handleFormSubmit = async (data) => {
+    console.log(data);
     try {
       setStateForm((prevState) => ({ ...prevState, loading: true }));
       const results = await postResults(data);
@@ -50,13 +51,18 @@ export default function Home() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <SimulationForm onSubmit={handleFormSubmit} loading={stateForm.loading} />
+              <SimulationForm
+                onSubmit={handleFormSubmit}
+                loading={stateForm.loading}
+              />
             </CardContent>
           </Card>
         </div>
-        
+
         <div className="lg:col-span-2">
-          {(stateForm.loading ) ? <Loader/> :( simulationData && generationResults)? (
+          {stateForm.loading ? (
+            <Loader />
+          ) : simulationData && generationResults ? (
             <div className="space-y-6">
               <Card>
                 <CardHeader>
@@ -66,17 +72,27 @@ export default function Home() {
                   </CardTitle>
                   <CardDescription>
                     <div className="space-y-1">
-                      <div>
-                        {simulationData.applyTreatment
-                          ? `Tratamiento aplicado: ${simulationData.chemicalName}`
-                          : "Sin tratamiento aplicado"}
-                      </div>
+                      {simulationData.aplicarQuimicos ? (
+                        <div>Tratamiento quimico aplicado</div>
+                      ) : (
+                        <div>Tratamiento quimico NO aplicado</div>
+                      )}
+
+                       {simulationData.aplicarFeromonas ? (
+                        <div>Tratamiento sexual aplicado</div>
+                      ) : (
+                        <div>Tratamiento sexual NO aplicado</div>
+                      )}
                       <div className="flex items-center gap-4 text-sm">
                         <span>
-                          🕒 Duración total: {generationResults.totalDays} días
+                          🕒 Duración total: {generationResults.diasTotales} días
                         </span>
                         <span>🐛 3 generaciones</span>
-                        <span>📊 Gen 1: {generationResults.generationData[0].days}d | Gen 2: {generationResults.generationData[1].days}d | Gen 3: {generationResults.generationData[2].days}d</span>
+                        <span>
+                          📊 Gen 1: {generationResults.datosGeneracion[0].dias}d
+                          | Gen 2: {generationResults.datosGeneracion[1].dias}d
+                          | Gen 3: {generationResults.datosGeneracion[2].dias}d
+                        </span>
                       </div>
                     </div>
                   </CardDescription>
@@ -135,7 +151,7 @@ export default function Home() {
                     <CardTitle>Resultados Finales</CardTitle>
                     <CardDescription>
                       Daños causados por 3 generaciones de Carpocapsa en{" "}
-                      {generationResults.totalDays} días
+                      {generationResults.diasTotales} días
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -147,7 +163,7 @@ export default function Home() {
                 </Card>
               }
             </div>
-          ) :  (
+          ) : (
             <Card className="h-full flex items-center justify-center">
               <CardContent className="pt-6 text-center">
                 <BarChart3 className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
@@ -161,7 +177,6 @@ export default function Home() {
               </CardContent>
             </Card>
           )}
-          
         </div>
       </div>
     </main>
