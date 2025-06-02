@@ -47,7 +47,8 @@ export default function Home() {
             <CardHeader>
               <CardTitle>Parámetros de Simulación</CardTitle>
               <CardDescription>
-                Configure los parámetros para el análisis de 3 generaciones
+                Configura los parámetros de entrada para la simulación de la
+                temporada.{" "}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -78,14 +79,15 @@ export default function Home() {
                         <div>Tratamiento quimico NO aplicado</div>
                       )}
 
-                       {simulationData.aplicarFeromonas ? (
+                      {simulationData.aplicarFeromonas ? (
                         <div>Tratamiento sexual aplicado</div>
                       ) : (
                         <div>Tratamiento sexual NO aplicado</div>
                       )}
                       <div className="flex items-center gap-4 text-sm">
                         <span>
-                          🕒 Duración total: {generationResults.diasTotales} días
+                          🕒 Duración total: {generationResults.diasTotales}{" "}
+                          días
                         </span>
                         <span>🐛 3 generaciones</span>
                         <span>
@@ -151,7 +153,7 @@ export default function Home() {
                     <CardTitle>Resultados Finales</CardTitle>
                     <CardDescription>
                       Daños causados por 3 generaciones de Carpocapsa en{" "}
-                      {generationResults.diasTotales} días
+                      {generationResults.diasTotales} días. Excluyendo el estado inicial
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -171,8 +173,8 @@ export default function Home() {
                   Configure los parámetros
                 </h3>
                 <p className="text-muted-foreground mt-2">
-                  Complete el formulario para calcular el análisis de las 3
-                  generaciones predefinidas de Carpocapsa
+                  Complete el formulario para obtener los resultados de la
+                  simulación.
                 </p>
               </CardContent>
             </Card>
