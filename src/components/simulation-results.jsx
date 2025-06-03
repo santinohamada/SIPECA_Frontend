@@ -182,7 +182,7 @@ export default function SimulationResults({ currentResults, simulationData }) {
               </strong>
               <br />• Pérdidas económicas:{" "}
               <strong>
-                {formatCurrency(currentResults.dineroFinalPerdido)} US$
+                {formatCurrency(currentResults.dineroFinalPerdido)}
               </strong>
               <br />• <u>Balance</u>:{" "}
               <strong>
