@@ -2,6 +2,7 @@ import { useState } from "react";
 import SimulationForm from "@/components/simulation-form";
 import SimulationCharts from "@/components/simulation-charts";
 import SimulationResults from "@/components/simulation-results";
+import logoSipeca from "/logoSipeca.png";
 import {
   Card,
   CardContent,
@@ -37,155 +38,160 @@ export default function Home() {
 
   return (
     <div className=" flex min-h-full">
-
-    
-    <main className="container mx-auto py-6 px-4 ">
-      <h1 className="text-3xl font-bold text-center mb-8">
-        SIPECA - SIMULADOR DE PERAS Y CARPOCAPSA
-      </h1>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-1">
-          <Card>
-            <CardHeader>
-              <CardTitle>Parámetros de Simulación</CardTitle>
-              <CardDescription>
-                Configura los parámetros de entrada para la simulación de la
-                temporada.{" "}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <SimulationForm
-                onSubmit={handleFormSubmit}
-                loading={stateForm.loading}
-              />
-            </CardContent>
-          </Card>
+      <main className="container mx-auto py-6 px-4 ">
+        <div className="flex justify-center">
+          <h1 className="text-3xl font-bold text-center flex  mb-8">
+            <img src={logoSipeca} className="h-50 w-50" alt="Logo de Sipeca" />
+          </h1>
         </div>
 
-        <div className="lg:col-span-2">
-          {stateForm.loading ? (
-            <Loader />
-          ) : simulationData && generationResults ? (
-            <div className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Calendar className="h-5 w-5" />
-                    Análisis
-                  </CardTitle>
-                  <CardDescription>
-                    <div className="space-y-1">
-                      {simulationData.aplicarQuimicos ? (
-                        <div>Tratamiento quimico aplicado</div>
-                      ) : (
-                        <div>Tratamiento quimico NO aplicado</div>
-                      )}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-1">
+            <Card>
+              <CardHeader>
+                <CardTitle>Parámetros de Simulación</CardTitle>
+                <CardDescription>
+                  Configura los parámetros de entrada para la simulación de la
+                  temporada.{" "}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <SimulationForm
+                  onSubmit={handleFormSubmit}
+                  loading={stateForm.loading}
+                />
+              </CardContent>
+            </Card>
+          </div>
 
-                      {simulationData.aplicarFeromonas ? (
-                        <div>Tratamiento con feromonas aplicado</div>
-                      ) : (
-                        <div>Tratamiento con feromonas NO aplicado</div>
-                      )}
-                      <div className="flex items-center gap-4 text-sm">
-                        <span>
-                          🕒 Duración total: {generationResults.diasTotales}{" "}
-                          días
-                        </span>
-                        <span>🐛 {generationResults.generacionesTotales} generaciones</span>
-                       {generationResults.resultadosPorGeneracion.map((res,i)=>(<span>
-                          📊 Gen {i}: {res.dias}d
-                          |
-                        </span>))}
-                        
-                        
-                      </div>
-                    </div>
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Tabs defaultValue="pears">
-                    <TabsList className="grid grid-cols-3 mb-4">
-                      <TabsTrigger
-                        value="pears"
-                        className="flex items-center gap-2"
-                      >
-                        <Leaf className="h-4 w-4" /> Peras por Generación
-                      </TabsTrigger>
-                      <TabsTrigger
-                        value="hectares"
-                        className="flex items-center gap-2"
-                      >
-                        <Bug className="h-4 w-4" /> Infección por Generación
-                      </TabsTrigger>
-                      <TabsTrigger
-                        value="money"
-                        className="flex items-center gap-2"
-                      >
-                        <DollarSign className="h-4 w-4" /> Economía por
-                        Generación
-                      </TabsTrigger>
-                    </TabsList>
-
-                    <TabsContent value="pears">
-                      <SimulationCharts
-                        type="pears"
-                        generationResults={generationResults}
-                      />
-                    </TabsContent>
-
-                    <TabsContent value="hectares">
-                      <SimulationCharts
-                        type="hectares"
-                        generationResults={generationResults}
-                      />
-                    </TabsContent>
-
-                    <TabsContent value="money">
-                      <SimulationCharts
-                        type="money"
-                        generationResults={generationResults}
-                      />
-                    </TabsContent>
-                  </Tabs>
-                </CardContent>
-              </Card>
-
-              {
+          <div className="lg:col-span-2">
+            {stateForm.loading ? (
+              <Loader />
+            ) : simulationData && generationResults ? (
+              <div className="space-y-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Resultados Finales</CardTitle>
+                    <CardTitle className="flex items-center gap-2">
+                      <Calendar className="h-5 w-5" />
+                      Análisis
+                    </CardTitle>
                     <CardDescription>
-                      Daños causados por 3 generaciones de Carpocapsa en{" "}
-                      {generationResults.diasTotales} días. Excluyendo el estado inicial
+                      <div className="space-y-1">
+                        {simulationData.aplicarQuimicos ? (
+                          <div>Tratamiento quimico aplicado</div>
+                        ) : (
+                          <div>Tratamiento quimico NO aplicado</div>
+                        )}
+
+                        {simulationData.aplicarFeromonas ? (
+                          <div>Tratamiento con feromonas aplicado</div>
+                        ) : (
+                          <div>Tratamiento con feromonas NO aplicado</div>
+                        )}
+                        <div className="flex items-center gap-4 text-sm">
+                          <span>
+                            🕒 Duración total: {generationResults.diasTotales}{" "}
+                            días
+                          </span>
+                          <span>
+                            🐛 {generationResults.generacionesTotales}{" "}
+                            generaciones
+                          </span>
+                          {generationResults.resultadosPorGeneracion.map(
+                            (res, i) => (
+                              <span key={i}>
+                                📊 Gen {i}: {res.dias}d
+                              </span>
+                            )
+                          )}
+                        </div>
+                      </div>
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <SimulationResults
-                      currentResults={generationResults}
-                      simulationData={simulationData}
-                    />
+                    <Tabs defaultValue="pears">
+                      <TabsList className="grid grid-cols-3 mb-4">
+                        <TabsTrigger
+                          value="pears"
+                          className="flex items-center gap-2"
+                        >
+                          <Leaf className="h-4 w-4" /> Peras por Generación
+                        </TabsTrigger>
+                        <TabsTrigger
+                          value="hectares"
+                          className="flex items-center gap-2"
+                        >
+                          <Bug className="h-4 w-4" /> Infección por Generación
+                        </TabsTrigger>
+                        <TabsTrigger
+                          value="money"
+                          className="flex items-center gap-2"
+                        >
+                          <DollarSign className="h-4 w-4" /> Economía por
+                          Generación
+                        </TabsTrigger>
+                      </TabsList>
+
+                      <TabsContent value="pears">
+                        <SimulationCharts
+                          type="pears"
+                          generationResults={generationResults}
+                        />
+                      </TabsContent>
+
+                      <TabsContent value="hectares">
+                        <SimulationCharts
+                          type="hectares"
+                          generationResults={generationResults}
+                        />
+                      </TabsContent>
+
+                      <TabsContent value="money">
+                        <SimulationCharts
+                          type="money"
+                          generationResults={generationResults}
+                        />
+                      </TabsContent>
+                    </Tabs>
                   </CardContent>
                 </Card>
-              }
-            </div>
-          ) : (
-            <Card className="h-full flex items-center justify-center">
-              <CardContent className="pt-6 text-center">
-                <BarChart3 className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
-                <h3 className="text-xl font-medium">
-                  Configure los parámetros
-                </h3>
-                <p className="text-muted-foreground mt-2">
-                  Complete el formulario para obtener los resultados de la
-                  simulación.
-                </p>
-              </CardContent>
-            </Card>
-          )}
+
+                {
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Resultados Finales</CardTitle>
+                      <CardDescription>
+                        Daños causados por 3 generaciones de Carpocapsa en{" "}
+                        {generationResults.diasTotales} días. Excluyendo el
+                        estado inicial
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <SimulationResults
+                        currentResults={generationResults}
+                        simulationData={simulationData}
+                      />
+                    </CardContent>
+                  </Card>
+                }
+              </div>
+            ) : (
+              <Card className="h-full flex items-center justify-center">
+                <CardContent className="pt-6 text-center">
+                  <BarChart3 className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
+                  <h3 className="text-xl font-medium">
+                    Configure los parámetros
+                  </h3>
+                  <p className="text-muted-foreground mt-2">
+                    Complete el formulario para obtener los resultados de la
+                    simulación.
+                  </p>
+                </CardContent>
+              </Card>
+            )}
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
     </div>
   );
 }

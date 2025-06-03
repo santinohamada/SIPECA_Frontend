@@ -10,12 +10,12 @@ import {
 export default function SimulationResults({ currentResults, simulationData }) {
   const formatNumber = (num) => {
     if (num >= 1000000) {
-      return (num / 1000000).toFixed(3) + "M"
+      return (num / 1000000).toFixed(3) + "M";
     } else if (num >= 1000) {
-      return (num / 1000).toFixed(3) + "K"
+      return (num / 1000).toFixed(3) + "K";
     }
-    return num.toFixed(0)
-  }
+    return num.toFixed(0);
+  };
 
   const formatCurrency = (num) => {
     return new Intl.NumberFormat("es-ES", {
@@ -64,7 +64,10 @@ export default function SimulationResults({ currentResults, simulationData }) {
               </div>
               <span className="text-2xl font-bold">
                 {formatCurrency(
-                  currentResults.dineroFinalGanado - currentResults.dineroFinalPerdido - currentResults.costoTotalTratamientoFeromonas - currentResults.costoTotalTratamientoQuimico
+                  currentResults.dineroFinalGanado -
+                    currentResults.dineroFinalPerdido -
+                    currentResults.costoTotalTratamientoFeromonas -
+                    currentResults.costoTotalTratamientoQuimico
                 )}
               </span>
             </div>
@@ -133,9 +136,12 @@ export default function SimulationResults({ currentResults, simulationData }) {
               <div className="flex justify-between border-t pt-2">
                 <span className="font-medium">Ganancia neta:</span>
                 <span className="font-bold">
-                 {formatCurrency(
-                  currentResults.dineroFinalGanado - currentResults.dineroFinalPerdido - currentResults.costoTotalTratamientoFeromonas - currentResults.costoTotalTratamientoQuimico
-                )}
+                  {formatCurrency(
+                    currentResults.dineroFinalGanado -
+                      currentResults.dineroFinalPerdido -
+                      currentResults.costoTotalTratamientoFeromonas -
+                      currentResults.costoTotalTratamientoQuimico
+                  )}
                 </span>
               </div>
             </div>
@@ -148,75 +154,172 @@ export default function SimulationResults({ currentResults, simulationData }) {
           <DollarSign className="h-5 w-5 mr-2 text-amber-600" />
           Conclusión Económica
         </h3>
-        {(currentResults && !simulationData.aplicarQuimicos && !simulationData.aplicarFeromonas) && (
-  <p>
-    <strong>Escenario: Sin tratamiento</strong><br />
-    Durante <strong>{currentResults.diasTotales}</strong> días 
-    (<strong>{currentResults.generacionesTotales}</strong> generaciones de la plaga), no se aplicó ningún tipo de tratamiento.<br /><br />
+        {currentResults &&
+          !simulationData.aplicarQuimicos &&
+          !simulationData.aplicarFeromonas && (
+            <p>
+              <strong>Escenario: Sin tratamiento</strong>
+              <br />
+              Durante <strong>{currentResults.diasTotales}</strong> días (
+              <strong>{currentResults.generacionesTotales}</strong> generaciones
+              de la plaga), no se aplicó ningún tipo de tratamiento.
+              <br />
+              <br />• Peras cosechadas:{" "}
+              <strong>{formatNumber(currentResults.perasSanasFinales)}</strong>
+              <br />• Peras perdidas por infección:{" "}
+              <strong>{formatNumber(currentResults.perasInfectadasFinales)}</strong>
+              <br />• Ganancia bruta:{" "}
+              <strong>
+                {formatCurrency(currentResults.dineroFinalGanado)}
+              </strong>
+              <br />• Pérdidas económicas:{" "}
+              <strong>
+                {formatCurrency(currentResults.dineroFinalPerdido)} US$
+              </strong>
+              <br />• <u>Ganancia neta</u>:{" "}
+              <strong>
+                {formatCurrency(
+                  currentResults.dineroFinalGanado -
+                    currentResults.dineroFinalPerdido -
+                    currentResults.costoTotalTratamientoFeromonas -
+                    currentResults.costoTotalTratamientoQuimico
+                )}
+              </strong>
+              <br />
+              <br />
+              Este escenario muestra que no aplicar control alguno resultó en
+              una pérdida considerable de fruta y una ganancia neta
+              prácticamente nula.
+            </p>
+          )}
 
-    • Peras cosechadas: <strong>{formatNumber(currentResults.perasSanasFinales)}</strong><br />
-    • Peras perdidas por infección: <strong>{currentResults.perasInfectadasFinales}</strong><br />
-    • Costo del tratamiento: <strong>{formatCurrency(0)}</strong><br />
-    • Ganancia bruta: <strong>{formatCurrency(currentResults.dineroFinalGanado)}</strong><br />
-    • Pérdidas económicas: <strong>{currentResults.dineroFinalPerdido.toFixed(3)} US$</strong><br />
-    • <u>Ganancia neta</u>: <strong>{formatCurrency(currentResults.dineroFinalGanado - currentResults.dineroFinalPerdido - currentResults.costoTotalTratamientoFeromonas - currentResults.costoTotalTratamientoQuimico)}</strong><br /><br />
+        {currentResults &&
+          simulationData.aplicarFeromonas &&
+          !simulationData.aplicarQuimicos && (
+            <p>
+              <strong>Escenario: Solo feromonas</strong>
+              <br />
+              Durante <strong>{currentResults.diasTotales}</strong> días (
+              <strong>{currentResults.generacionesTotales}</strong> generaciones
+              de la plaga), se aplicaron únicamente feromonas.
+              <br />
+              <br />• Peras cosechadas:{" "}
+              <strong>{formatNumber(currentResults.perasSanasFinales)}</strong>
+              <br />• Peras perdidas por infección:{" "}
+              <strong>{formatNumber(currentResults.perasInfectadasFinales)}</strong>
+              <br />• Costo del tratamiento:{" "}
+              <strong>
+                {formatCurrency(currentResults.costoTotalTratamientoFeromonas)}
+              </strong>
+              <br />• Ganancia bruta:{" "}
+              <strong>
+                {formatCurrency(currentResults.dineroFinalGanado)}
+              </strong>
+              <br />• Pérdidas económicas:{" "}
+              <strong>{formatCurrency(currentResults.dineroFinalPerdido)}</strong>
+              <br />• <u>Ganancia neta</u>:{" "}
+              <strong>
+                {formatCurrency(
+                  currentResults.dineroFinalGanado -
+                    currentResults.dineroFinalPerdido -
+                    currentResults.costoTotalTratamientoFeromonas -
+                    currentResults.costoTotalTratamientoQuimico
+                )}
+              </strong>
+              <br />
+              <br />
+              El uso exclusivo de feromonas ayudó a mitigar parcialmente la
+              infestación, aunque el rendimiento económico fue limitado.
+            </p>
+          )}
 
-    Este escenario muestra que no aplicar control alguno resultó en una pérdida considerable de fruta y una ganancia neta prácticamente nula.
-  </p>
-)}
+        {currentResults &&
+          simulationData.aplicarQuimicos &&
+          !simulationData.aplicarFeromonas && (
+            <p>
+              <strong>Escenario: Solo tratamiento químico</strong>
+              <br />
+              En un período de <strong>
+                {currentResults.diasTotales}
+              </strong>{" "}
+              días (<strong>{currentResults.generacionesTotales}</strong>{" "}
+              generaciones), se aplicó únicamente tratamiento químico.
+              <br />
+              <br />• Peras cosechadas:{" "}
+              <strong>{formatNumber(currentResults.perasSanasFinales)}</strong>
+              <br />• Peras perdidas por infección:{" "}
+              <strong>{formatNumber(currentResults.perasInfectadasFinales)}</strong>
+              <br />• Costo del tratamiento:{" "}
+              <strong>
+                {formatCurrency(currentResults.costoTotalTratamientoQuimico)}
+              </strong>
+              <br />• Ganancia bruta:{" "}
+              <strong>
+                {formatCurrency(currentResults.dineroFinalGanado)}
+              </strong>
+              <br />• Pérdidas económicas:{" "}
+              <strong>{formatCurrency(currentResults.dineroFinalPerdido)}</strong>
+              <br />• <u>Ganancia neta</u>:{" "}
+              <strong>
+                {formatCurrency(
+                  currentResults.dineroFinalGanado -
+                    currentResults.dineroFinalPerdido -
+                    currentResults.costoTotalTratamientoFeromonas -
+                    currentResults.costoTotalTratamientoQuimico
+                )}
+              </strong>
+              <br />
+              <br />
+              El tratamiento químico logró contener parcialmente la plaga, pero
+              no fue suficiente para maximizar la producción ni la rentabilidad.
+            </p>
+          )}
 
-{(currentResults && simulationData.aplicarFeromonas && !simulationData.aplicarQuimicos) && (
-  <p>
-    <strong>Escenario: Solo feromonas</strong><br />
-    Durante <strong>{currentResults.diasTotales}</strong> días 
-    (<strong>{currentResults.generacionesTotales}</strong> generaciones de la plaga), se aplicaron únicamente feromonas.<br /><br />
-
-    • Peras cosechadas: <strong>{formatNumber(currentResults.perasSanasFinales)}</strong><br />
-    • Peras perdidas por infección: <strong>{currentResults.perasInfectadasFinales}</strong><br />
-    • Costo del tratamiento: <strong>{formatCurrency(currentResults.costoTotalTratamientoFeromonas)}</strong><br />
-    • Ganancia bruta: <strong>{formatCurrency(currentResults.dineroFinalGanado)}</strong><br />
-    • Pérdidas económicas: <strong>{currentResults.dineroFinalPerdido.toFixed(3)}</strong><br />
-    • <u>Ganancia neta</u>: <strong>{formatCurrency(currentResults.dineroFinalGanado - currentResults.dineroFinalPerdido - currentResults.costoTotalTratamientoFeromonas - currentResults.costoTotalTratamientoQuimico)}</strong><br /><br />
-
-    El uso exclusivo de feromonas ayudó a mitigar parcialmente la infestación, aunque el rendimiento económico fue limitado.
-  </p>
-)}
-
-{(currentResults && simulationData.aplicarQuimicos && !simulationData.aplicarFeromonas) && (
-  <p>
-    <strong>Escenario: Solo tratamiento químico</strong><br />
-    En un período de <strong>{currentResults.diasTotales}</strong> días 
-    (<strong>{currentResults.generacionesTotales}</strong> generaciones), se aplicó únicamente tratamiento químico.<br /><br />
-
-    • Peras cosechadas: <strong>{formatNumber(currentResults.perasSanasFinales)}</strong><br />
-    • Peras perdidas por infección: <strong>{currentResults.perasInfectadasFinales}</strong><br />
-    • Costo del tratamiento: <strong>{formatCurrency(currentResults.costoTotalTratamientoQuimico)}</strong><br />
-    • Ganancia bruta: <strong>{formatCurrency(currentResults.dineroFinalGanado)}</strong><br />
-    • Pérdidas económicas: <strong>{currentResults.dineroFinalPerdido.toFixed(3)}</strong><br />
-    • <u>Ganancia neta</u>: <strong>{formatCurrency(currentResults.dineroFinalGanado - currentResults.dineroFinalPerdido - currentResults.costoTotalTratamientoFeromonas - currentResults.costoTotalTratamientoQuimico)}</strong><br /><br />
-
-    El tratamiento químico logró contener parcialmente la plaga, pero no fue suficiente para maximizar la producción ni la rentabilidad.
-  </p>
-)}
-
-{(currentResults && simulationData.aplicarQuimicos && simulationData.aplicarFeromonas) && (
-  <p>
-    <strong>Escenario: Tratamiento combinado (químico + feromonas)</strong><br />
-    Durante <strong>{currentResults.diasTotales}</strong> días 
-    (<strong>{currentResults.generacionesTotales}</strong> generaciones), se aplicaron feromonas y tratamiento químico de manera conjunta.<br /><br />
-
-    • Peras cosechadas: <strong>{formatNumber(currentResults.perasSanasFinales)}</strong><br />
-    • Peras perdidas por infección: <strong>{currentResults.perasInfectadasFinales}</strong><br />
-    • Costo total del tratamiento: <strong>{formatCurrency(currentResults.costoTotalTratamientoFeromonas + currentResults.costoTotalTratamientoQuimico)}</strong><br />
-    • Ganancia bruta: <strong>{formatCurrency(currentResults.dineroFinalGanado)}</strong><br />
-    • Pérdidas económicas: <strong>{currentResults.dineroFinalPerdido.toFixed(3)}</strong><br />
-    • <u>Ganancia neta</u>: <strong>{formatCurrency(currentResults.dineroFinalGanado - currentResults.costoTotalTratamientoFeromonas - currentResults.costoTotalTratamientoQuimico - currentResults.dineroFinalPerdido)}</strong><br /><br />
-
-    El enfoque combinado fue efectivo, permitiendo minimizar las pérdidas y mejorar significativamente la rentabilidad final.
-  </p>
-)}
-
-
+        {currentResults &&
+          simulationData.aplicarQuimicos &&
+          simulationData.aplicarFeromonas && (
+            <p>
+              <strong>
+                Escenario: Tratamiento combinado (químico + feromonas)
+              </strong>
+              <br />
+              Durante <strong>{currentResults.diasTotales}</strong> días (
+              <strong>{currentResults.generacionesTotales}</strong>{" "}
+              generaciones), se aplicaron feromonas y tratamiento químico de
+              manera conjunta.
+              <br />
+              <br />• Peras cosechadas:{" "}
+              <strong>{formatNumber(currentResults.perasSanasFinales)}</strong>
+              <br />• Peras perdidas por infección:{" "}
+              <strong>{formatNumber(currentResults.perasInfectadasFinales)}</strong>
+              <br />• Costo total del tratamiento:{" "}
+              <strong>
+                {formatCurrency(
+                  currentResults.costoTotalTratamientoFeromonas +
+                    currentResults.costoTotalTratamientoQuimico
+                )}
+              </strong>
+              <br />• Ganancia bruta:{" "}
+              <strong>
+                {formatCurrency(currentResults.dineroFinalGanado)}
+              </strong>
+              <br />• Pérdidas económicas:{" "}
+              <strong>{formatCurrency(currentResults.dineroFinalPerdido)}</strong>
+              <br />• <u>Ganancia neta</u>:{" "}
+              <strong>
+                {formatCurrency(
+                  currentResults.dineroFinalGanado -
+                    currentResults.costoTotalTratamientoFeromonas -
+                    currentResults.costoTotalTratamientoQuimico -
+                    currentResults.dineroFinalPerdido
+                )}
+              </strong>
+              <br />
+              <br />
+              El enfoque combinado fue efectivo, permitiendo minimizar las
+              pérdidas y mejorar significativamente la rentabilidad final.
+            </p>
+          )}
       </div>
     </div>
   );
