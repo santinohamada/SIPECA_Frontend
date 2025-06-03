@@ -13,6 +13,11 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Switch } from "@/components/ui/switch"
+function preventNegativeInput(e) {
+  if (e.key === "-" || e.key === "e" || e.key === "+") {
+    e.preventDefault()
+  }
+}
 
 const formSchema = z.object({
   cantidadHectareas: z.coerce.number().positive("Debe ser mayor a 0").max(1000, "Máximo 1000 hectáreas"),
@@ -57,7 +62,7 @@ export default function SimulationForm({ onSubmit, loading }) {
             <FormItem>
               <FormLabel>Hectáreas plantadas</FormLabel>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input onKeyDown={preventNegativeInput} type="number" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -71,7 +76,7 @@ export default function SimulationForm({ onSubmit, loading }) {
             <FormItem>
               <FormLabel>Plantas por hectárea</FormLabel>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input onKeyDown={preventNegativeInput} type="number" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -85,7 +90,7 @@ export default function SimulationForm({ onSubmit, loading }) {
             <FormItem>
               <FormLabel>Hectáreas inicialmente infectadas</FormLabel>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input onKeyDown={preventNegativeInput} type="number" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -99,7 +104,7 @@ export default function SimulationForm({ onSubmit, loading }) {
             <FormItem>
               <FormLabel>Precio por Tonelada ($)</FormLabel>
               <FormControl>
-                <Input type="number" step="0.01" {...field} />
+                <Input onKeyDown={preventNegativeInput} type="number" step="0.01" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -131,7 +136,7 @@ export default function SimulationForm({ onSubmit, loading }) {
               <FormItem>
                 <FormLabel>Costo de tratamiento químico por hectárea ($)</FormLabel>
                 <FormControl>
-                  <Input type="number" step="0.01" {...field} />
+                  <Input onKeyDown={preventNegativeInput} type="number" step="0.01" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -164,7 +169,7 @@ export default function SimulationForm({ onSubmit, loading }) {
               <FormItem>
                 <FormLabel>Costo de tratamiento con feromonas por hectárea ($)</FormLabel>
                 <FormControl>
-                  <Input type="number" step="0.01" {...field} />
+                  <Input onKeyDown={preventNegativeInput} type="number" step="0.01" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

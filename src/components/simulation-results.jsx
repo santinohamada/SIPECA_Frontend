@@ -9,71 +9,79 @@ import {
 
 export default function SimulationResults({ currentResults, simulationData }) {
   const formatNumber = (num) => {
+    const format = (value, suffix) => {
+      return value.toLocaleString("es-ES", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }) + suffix;
+    };
+  
     if (num >= 1000000) {
-      return (num / 1000000).toFixed(3) + "M";
+      return format(num / 1000000, "M");
     } else if (num >= 1000) {
-      return (num / 1000).toFixed(3) + "K";
+      return format(num / 1000, "K");
     }
-    return num.toFixed(0);
+    return num.toLocaleString("es-ES");
   };
-
+  
   const formatCurrency = (num) => {
     return new Intl.NumberFormat("es-ES", {
       style: "currency",
       currency: "USD",
+      minimumFractionDigits: 0,
       maximumFractionDigits: 0,
+      useGrouping: true,
     }).format(num);
   };
+  
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card className="bg-green-50 dark:bg-green-900/20">
-          <CardContent className="pt-6">
-            <div className=" text-center items-center justify-between">
-              <div className="flex items-center">
-                <Leaf className="h-5 w-5 mr-2 text-green-600 dark:text-green-400" />
-                <h3 className="text-lg font-medium">Peras Cosechadas</h3>
-              </div>
-              <span className="text-2xl font-bold">
-                {formatNumber(currentResults.perasSanasFinales)}
-              </span>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="text-center bg-red-50 dark:bg-red-900/20">
-          <CardContent className="pt-6">
-            <div className="items-center justify-between">
-              <div className="flex items-center">
-                <Bug className="h-5 w-5 mr-2 text-red-600 dark:text-red-400" />
-                <h3 className="text-lg font-medium">Hectáreas infectadas</h3>
-              </div>
-              <span className="text-2xl font-bold">
-                {currentResults.hectareasInfectadasFinales.toFixed(3)}
-              </span>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className=" text-center bg-blue-50 dark:bg-blue-900/20">
-          <CardContent className="pt-6">
-            <div className=" items-center justify-between">
-              <div className="flex items-center">
-                <DollarSign className="h-5 w-5 mr-2 text-blue-600 dark:text-blue-400" />
-                <h3 className="text-lg font-medium">Ganancia Neta</h3>
-              </div>
-              <span className="text-2xl font-bold">
-                {formatCurrency(
-                  currentResults.dineroFinalGanado -
-                    currentResults.dineroFinalPerdido -
-                    currentResults.costoTotalTratamientoFeromonas -
-                    currentResults.costoTotalTratamientoQuimico
-                )}
-              </span>
-            </div>
-          </CardContent>
-        </Card>
+  {/* Peras Cosechadas */}
+  <Card className="bg-green-50 dark:bg-green-900/20">
+    <CardContent className="flex flex-col items-center justify-center gap-2 py-6">
+      <div className="flex items-center gap-2">
+        <Leaf className="h-5 w-5 text-green-600 dark:text-green-400" />
+        <h3 className="text-lg font-medium">Peras Cosechadas</h3>
       </div>
+      <span className="text-2xl font-bold">
+        {formatNumber(currentResults.perasSanasFinales)}
+      </span>
+    </CardContent>
+  </Card>
+
+  {/* Hectáreas infectadas */}
+  <Card className="bg-red-50 dark:bg-red-900/20">
+    <CardContent className="flex flex-col items-center justify-center gap-2 py-6">
+      <div className="flex items-center gap-2">
+        <Bug className="h-5 w-5 text-red-600 dark:text-red-400" />
+        <h3 className="text-lg font-medium">Hectáreas infectadas</h3>
+      </div>
+      <span className="text-2xl font-bold">
+        {formatNumber(currentResults.hectareasInfectadasFinales)}
+      </span>
+    </CardContent>
+  </Card>
+
+  {/* Balance */}
+  <Card className="bg-blue-50 dark:bg-blue-900/20">
+    <CardContent className="flex flex-col items-center justify-center gap-2 py-6">
+      <div className="flex items-center gap-2">
+        <DollarSign className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+        <h3 className="text-lg font-medium">Balance</h3>
+      </div>
+      <span className="text-2xl font-bold">
+        {formatCurrency(
+          currentResults.dineroFinalGanado -
+          currentResults.dineroFinalPerdido -
+          currentResults.costoTotalTratamientoFeromonas -
+          currentResults.costoTotalTratamientoQuimico
+        )}
+      </span>
+    </CardContent>
+  </Card>
+</div>
+
 
       <div className="grid grid-cols-1 gap-6">
         <Card>
@@ -106,7 +114,7 @@ export default function SimulationResults({ currentResults, simulationData }) {
                   Hectáreas infectadas:
                 </span>
                 <span className="font-medium">
-                  {currentResults.hectareasInfectadasFinales.toFixed(1)}
+                  {formatNumber(currentResults.hectareasInfectadasFinales)}
                 </span>
               </div>
               <div className="flex justify-between">
@@ -134,7 +142,7 @@ export default function SimulationResults({ currentResults, simulationData }) {
                 </span>
               </div>
               <div className="flex justify-between border-t pt-2">
-                <span className="font-medium">Ganancia neta:</span>
+                <span className="font-medium">Balance:</span>
                 <span className="font-bold">
                   {formatCurrency(
                     currentResults.dineroFinalGanado -
@@ -176,7 +184,7 @@ export default function SimulationResults({ currentResults, simulationData }) {
               <strong>
                 {formatCurrency(currentResults.dineroFinalPerdido)} US$
               </strong>
-              <br />• <u>Ganancia neta</u>:{" "}
+              <br />• <u>Balance</u>:{" "}
               <strong>
                 {formatCurrency(
                   currentResults.dineroFinalGanado -
@@ -188,7 +196,7 @@ export default function SimulationResults({ currentResults, simulationData }) {
               <br />
               <br />
               Este escenario muestra que no aplicar control alguno resultó en
-              una pérdida considerable de fruta y una ganancia neta
+              una pérdida considerable de fruta y una Balance
               prácticamente nula.
             </p>
           )}
@@ -217,7 +225,7 @@ export default function SimulationResults({ currentResults, simulationData }) {
               </strong>
               <br />• Pérdidas económicas:{" "}
               <strong>{formatCurrency(currentResults.dineroFinalPerdido)}</strong>
-              <br />• <u>Ganancia neta</u>:{" "}
+              <br />• <u>Balance</u>:{" "}
               <strong>
                 {formatCurrency(
                   currentResults.dineroFinalGanado -
@@ -259,7 +267,7 @@ export default function SimulationResults({ currentResults, simulationData }) {
               </strong>
               <br />• Pérdidas económicas:{" "}
               <strong>{formatCurrency(currentResults.dineroFinalPerdido)}</strong>
-              <br />• <u>Ganancia neta</u>:{" "}
+              <br />• <u>Balance</u>:{" "}
               <strong>
                 {formatCurrency(
                   currentResults.dineroFinalGanado -
@@ -305,7 +313,7 @@ export default function SimulationResults({ currentResults, simulationData }) {
               </strong>
               <br />• Pérdidas económicas:{" "}
               <strong>{formatCurrency(currentResults.dineroFinalPerdido)}</strong>
-              <br />• <u>Ganancia neta</u>:{" "}
+              <br />• <u>Balance</u>:{" "}
               <strong>
                 {formatCurrency(
                   currentResults.dineroFinalGanado -

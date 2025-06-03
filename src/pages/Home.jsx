@@ -100,7 +100,7 @@ export default function Home() {
                           {generationResults.resultadosPorGeneracion.map(
                             (res, i) => (
                               <span key={i}>
-                                📊 Gen {i}: {res.dias}d
+                                📊 Gen {i+1}: {res.dias}d
                               </span>
                             )
                           )}

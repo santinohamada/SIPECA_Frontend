@@ -3,22 +3,30 @@ import { Card, CardContent } from "@/components/ui/card"
 
 export default function SimulationCharts({ type, generationResults }) {
   const formatNumber = (num) => {
+    const format = (value, suffix) => {
+      return value.toLocaleString("es-ES", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }) + suffix;
+    };
+  
     if (num >= 1000000) {
-      return (num / 1000000).toFixed(3) + "M"
+      return format(num / 1000000, "M");
     } else if (num >= 1000) {
-      return (num / 1000).toFixed(3) + "K"
+      return format(num / 1000, "K");
     }
-    return num.toFixed(0)
-  }
-
+    return num.toLocaleString("es-ES");
+  };
+  
   const formatCurrency = (num) => {
-    if (num >= 1000000) {
-      return "$" + (num / 1000000).toFixed(3) + "M"
-    } else if (num >= 1000) {
-      return "$" + (num / 1000).toFixed(3) + "K"
-    }
-    return "$" + num.toFixed(0)
-  }
+    return new Intl.NumberFormat("es-ES", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+      useGrouping: true,
+    }).format(num);
+  };
 
   if (type === "pears") {
     console.log(generationResults)
