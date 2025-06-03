@@ -115,20 +115,39 @@ export default function Home() {
                           value="pears"
                           className="flex items-center gap-2"
                         >
-                          <Leaf className="h-4 w-4" /> Peras por Generación
+                          {/* For medium screens and up */}
+                          <div className="hidden md:flex items-center gap-2">
+                            <Leaf className="h-4 w-4" />
+                            Peras por Generación
+                          </div>
+
+                          {/* For small screens */}
+                          <div className="flex md:hidden">
+                            <Leaf className="h-4 w-4" />
+                          </div>
                         </TabsTrigger>
                         <TabsTrigger
                           value="hectares"
                           className="flex items-center gap-2"
                         >
-                          <Bug className="h-4 w-4" /> Infección por Generación
+                          <div className="hidden md:flex items-center gap-2">
+                            <Bug className="h-4 w-4" /> Infección por Generación
+                          </div>
+                          <div className="flex md:hidden">
+                            <Bug className="h-4 w-4" />
+                          </div>
                         </TabsTrigger>
                         <TabsTrigger
                           value="money"
                           className="flex items-center gap-2"
                         >
-                          <DollarSign className="h-4 w-4" /> Economía por
-                          Generación
+                          <div className="hidden md:flex items-center gap-2">
+                            <DollarSign className="h-4 w-4" /> Economía por
+                            Generación
+                          </div>
+                          <div className=" flex md:hidden ">
+                            <DollarSign className="h-4 w-4" />
+                          </div>
                         </TabsTrigger>
                       </TabsList>
 

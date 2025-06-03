@@ -49,7 +49,7 @@ export default function SimulationResults({ currentResults, simulationData }) {
                 <h3 className="text-lg font-medium">Hectáreas infectadas</h3>
               </div>
               <span className="text-2xl font-bold">
-                {currentResults.hectareasInfectadasFinales.toFixed(1)}
+                {currentResults.hectareasInfectadasFinales.toFixed(3)}
               </span>
             </div>
           </CardContent>
