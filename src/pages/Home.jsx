@@ -41,7 +41,7 @@ export default function Home() {
       <main className="container mx-auto py-6 px-4 ">
         <div className="flex justify-center">
           <h1 className="text-3xl font-bold text-center flex  mb-8">
-            <img src={logoSipeca} className="h-50 w-50" alt="Logo de Sipeca" />
+            <img src={logoSipeca} className="h-40 w-40" alt="Logo de Sipeca" />
           </h1>
         </div>
 
