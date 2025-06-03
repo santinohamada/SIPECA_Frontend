@@ -110,7 +110,8 @@ export default function Home() {
                   </CardHeader>
                   <CardContent>
                     <Tabs defaultValue="pears">
-                      <TabsList className="grid grid-cols-3 mb-4">
+                      <TabsList className=" flex justify-center mx-auto mb-4">
+                      <div className="flex justify-between">
                         <TabsTrigger
                           value="pears"
                           className="flex items-center gap-2"
@@ -149,6 +150,7 @@ export default function Home() {
                             <DollarSign className="h-4 w-4" />
                           </div>
                         </TabsTrigger>
+                        </div>
                       </TabsList>
 
                       <TabsContent value="pears">
@@ -164,7 +166,7 @@ export default function Home() {
                           generationResults={generationResults}
                         />
                       </TabsContent>
-
+                         
                       <TabsContent value="money">
                         <SimulationCharts
                           type="money"
