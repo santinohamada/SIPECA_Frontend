@@ -64,7 +64,7 @@ export default function SimulationResults({ currentResults, simulationData }) {
               </div>
               <span className="text-2xl font-bold">
                 {formatCurrency(
-                  currentResults.dineroFinalGanado - currentResults.dineroFinalPerdido - currentResults.costoTotalTratamientoFeromonas - costoTotalTratamientoQuimico
+                  currentResults.dineroFinalGanado - currentResults.dineroFinalPerdido - currentResults.costoTotalTratamientoFeromonas - currentResults.costoTotalTratamientoQuimico
                 )}
               </span>
             </div>
@@ -134,7 +134,7 @@ export default function SimulationResults({ currentResults, simulationData }) {
                 <span className="font-medium">Ganancia neta:</span>
                 <span className="font-bold">
                  {formatCurrency(
-                  currentResults.dineroFinalGanado - currentResults.dineroFinalPerdido - currentResults.costoTotalTratamientoFeromonas - costoTotalTratamientoQuimico
+                  currentResults.dineroFinalGanado - currentResults.dineroFinalPerdido - currentResults.costoTotalTratamientoFeromonas - currentResults.costoTotalTratamientoQuimico
                 )}
                 </span>
               </div>
@@ -159,7 +159,7 @@ export default function SimulationResults({ currentResults, simulationData }) {
     • Costo del tratamiento: <strong>{formatCurrency(0)}</strong><br />
     • Ganancia bruta: <strong>{formatCurrency(currentResults.dineroFinalGanado)}</strong><br />
     • Pérdidas económicas: <strong>{currentResults.dineroFinalPerdido.toFixed(3)} US$</strong><br />
-    • <u>Ganancia neta</u>: <strong>{formatCurrency(currentResults.dineroFinalGanado - currentResults.dineroFinalPerdido - currentResults.costoTotalTratamientoFeromonas - costoTotalTratamientoQuimico)}</strong><br /><br />
+    • <u>Ganancia neta</u>: <strong>{formatCurrency(currentResults.dineroFinalGanado - currentResults.dineroFinalPerdido - currentResults.costoTotalTratamientoFeromonas - currentResults.costoTotalTratamientoQuimico)}</strong><br /><br />
 
     Este escenario muestra que no aplicar control alguno resultó en una pérdida considerable de fruta y una ganancia neta prácticamente nula.
   </p>
@@ -176,7 +176,7 @@ export default function SimulationResults({ currentResults, simulationData }) {
     • Costo del tratamiento: <strong>{formatCurrency(currentResults.costoTotalTratamientoFeromonas)}</strong><br />
     • Ganancia bruta: <strong>{formatCurrency(currentResults.dineroFinalGanado)}</strong><br />
     • Pérdidas económicas: <strong>{currentResults.dineroFinalPerdido.toFixed(3)}</strong><br />
-    • <u>Ganancia neta</u>: <strong>{formatCurrency(currentResults.dineroFinalGanado - currentResults.dineroFinalPerdido - currentResults.costoTotalTratamientoFeromonas - costoTotalTratamientoQuimico)}</strong><br /><br />
+    • <u>Ganancia neta</u>: <strong>{formatCurrency(currentResults.dineroFinalGanado - currentResults.dineroFinalPerdido - currentResults.costoTotalTratamientoFeromonas - currentResults.costoTotalTratamientoQuimico)}</strong><br /><br />
 
     El uso exclusivo de feromonas ayudó a mitigar parcialmente la infestación, aunque el rendimiento económico fue limitado.
   </p>
@@ -193,7 +193,7 @@ export default function SimulationResults({ currentResults, simulationData }) {
     • Costo del tratamiento: <strong>{formatCurrency(currentResults.costoTotalTratamientoQuimico)}</strong><br />
     • Ganancia bruta: <strong>{formatCurrency(currentResults.dineroFinalGanado)}</strong><br />
     • Pérdidas económicas: <strong>{currentResults.dineroFinalPerdido.toFixed(3)}</strong><br />
-    • <u>Ganancia neta</u>: <strong>{formatCurrency(currentResults.dineroFinalGanado - currentResults.dineroFinalPerdido - currentResults.costoTotalTratamientoFeromonas - costoTotalTratamientoQuimico)}</strong><br /><br />
+    • <u>Ganancia neta</u>: <strong>{formatCurrency(currentResults.dineroFinalGanado - currentResults.dineroFinalPerdido - currentResults.costoTotalTratamientoFeromonas - currentResults.costoTotalTratamientoQuimico)}</strong><br /><br />
 
     El tratamiento químico logró contener parcialmente la plaga, pero no fue suficiente para maximizar la producción ni la rentabilidad.
   </p>
