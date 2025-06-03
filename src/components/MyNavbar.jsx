@@ -47,7 +47,7 @@ export default function MyNavbar() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0  shadow-sm">
+        <div className="md:hidden  top-16 left-0 right-0 ">
           <div className="flex flex-col space-y-4 px-6 py-4">
             <NavLink
               to="/"
