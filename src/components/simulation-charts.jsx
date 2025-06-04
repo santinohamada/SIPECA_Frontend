@@ -44,7 +44,7 @@ export default function SimulationCharts({ type, generationResults }) {
               <LineChart data={generationResults.resultadosPorGeneracion} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid  />
                 <XAxis
-                  dataKey="generation"
+                  dataKey="generacion"
                   label={{ value: "Generación", position: "insideBottomRight", offset: -5 }}
                 />
                 <YAxis
@@ -94,7 +94,7 @@ export default function SimulationCharts({ type, generationResults }) {
               <LineChart data={generationResults.resultadosPorGeneracion} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
-                  dataKey="generation"
+                  dataKey="generacion"
                   label={{ value: "Generación", position: "insideBottomRight", offset: -5 }}
                 />
                 <YAxis
