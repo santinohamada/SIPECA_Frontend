@@ -36,10 +36,10 @@ export default function SimulationForm({ onSubmit, loading }) {
     defaultValues: {
       cantidadHectareas: 100,
       plantasPorHectarea: 400,
-      hectareasInfectadas: 5,
+      hectareasInfectadas: 3,
       costoTratamientoFeromonasPorHectarea: 250,
       costoTratamientoQuimicoPorHectarea: 150,
-      precioPera: 0.5,
+      precioPera: 700,
       aplicarQuimicos: false,
       aplicarFeromonas: false,
     },
