@@ -196,8 +196,7 @@ export default function SimulationResults({ currentResults, simulationData }) {
               <br />
               <br />
               Este escenario muestra que no aplicar control alguno resultó en
-              una pérdida considerable de fruta y una Balance
-              prácticamente nula.
+              una pérdida considerable de fruta, afectando las ganancias.
             </p>
           )}
 
