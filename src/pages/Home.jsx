@@ -20,8 +20,6 @@ export default function Home() {
   const [simulationData, setSimulationData] = useState(null);
   const [generationResults, setGenerationResults] = useState(null);
 
-  console.log(simulationData);
-  console.log(generationResults);
   const handleFormSubmit = async (data) => {
     console.log(data);
     try {

@@ -19,17 +19,23 @@ export default function SimulationCharts({ type, generationResults }) {
   };
   
   const formatCurrency = (num) => {
-    return new Intl.NumberFormat("es-ES", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-      useGrouping: true,
-    }).format(num);
+    const format = (value, suffix) => {
+      return value.toLocaleString("es-ES", {
+        minimumFractionDigits: 1,
+        maximumFractionDigits: 1,
+      }) + suffix;
+    };
+  
+    if (num >= 1000000) {
+      return format(num / 1000000, " M$");
+    } else if (num >= 1000) {
+      return format(num / 1000, "K$");
+    }
+    return `${num.toLocaleString("es-ES")}`;
   };
 
   if (type === "pears") {
-    console.log(generationResults)
+ 
     return (
       <Card>
         <CardContent className="pt-6">
