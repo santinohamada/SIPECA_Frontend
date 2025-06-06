@@ -179,7 +179,7 @@ export default function SimulationCharts({ type, generationResults }) {
                 />
                 <Line
                   type="monotone"
-                  name="Costo Tratamiento Acumulado"
+                  name="Costo Tratamiento Quimico Acumulado"
                   dataKey="costoTratamientoQuimico"
                   stroke="#facc15"
                   strokeWidth={2.5}
@@ -188,7 +188,7 @@ export default function SimulationCharts({ type, generationResults }) {
                 />
                 <Line
                   type="monotone"
-                  name="Costo Tratamiento Acumulado"
+                  name="Costo Tratamiento con Feromonas Acumulado"
                   dataKey="costoTratamientoFeromonas"
                   stroke="#000080"
                   strokeWidth={2.5}

@@ -35,8 +35,8 @@ export default function SimulationForm({ onSubmit, loading }) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       cantidadHectareas: 100,
-      plantasPorHectarea: 400,
-      hectareasInfectadas: 3,
+      plantasPorHectarea: 200,
+      hectareasInfectadas: 1,
       costoTratamientoFeromonasPorHectarea: 250,
       costoTratamientoQuimicoPorHectarea: 150,
       precioPera: 700,
