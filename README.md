@@ -1,6 +1,6 @@
-# SIPECA - Simulador de Plagas en Cultivos Agrícolas 🌱🪰
+# SIPECA - Frontend🌱🪰
 
-Frontend del sistema **SIPECA** (Sistema Inteligente de Pronóstico de Evolución de la Carpocapsa), desarrollado como parte de un proyecto académico en la Universidad Tecnológica Nacional - Facultad Regional Tucumán. Este sistema permite simular el impacto de la plaga *Carpocapsa* en cultivos de peras mediante modelos probabilísticos, y tomar decisiones estratégicas basadas en los resultados.
+Frontend del sistema **SIPECA** (Simulador de Peras y Carpocapsa), desarrollado como parte de un proyecto académico en la Universidad Tecnológica Nacional - Facultad Regional Tucumán. Este sistema permite simular el impacto de la plaga *Carpocapsa* en cultivos de peras mediante modelos probabilísticos, y tomar decisiones estratégicas basadas en los resultados.
 
 
 ## 📦 Repositorios del Proyecto
